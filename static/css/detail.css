@@ -5,6 +5,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
+    font-size: 11px;
   }
   .sidebar {
     width: 80px;
@@ -24,7 +25,7 @@ body {
   }
   .sidebar a {
     text-decoration: none;
-    color: #6c757d;  
+    color: #6c757d;
     font-weight: 500;
     margin: 20px 0;
     text-align: center;
@@ -55,6 +56,7 @@ body {
     flex-direction: column;
     margin-left: 80px;
     padding: 20px;
+    padding-top: 0px;
     box-sizing: border-box;
   }
   .table-container {
@@ -63,14 +65,12 @@ body {
     box-sizing: border-box;
   }
   .table-background {
-background-color: #ffffff;
-border-radius: 10px;
-padding: 20px;
-width: 100%;
-box-sizing: border-box;
-position: relative; /* Keep it relative */
-z-index: -99; /* Lower z-index */
-}
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
   table {
     width: 100%;
     border-collapse: collapse;
@@ -121,63 +121,43 @@ z-index: -99; /* Lower z-index */
     }
   }
 
-  @media (max-width: 2220px) {
-    ul {
-
-    gap: 35px;
-  }
-  }
-
-  @media (max-width: 1400px) {
+  @media (max-width: 1060px) {
     ul {
     font-size: 12px;
-    gap: 10px;
   }
   }
 
-  @media (max-width: 1120px) {
-    ul {
-    font-size: 12px;
-    gap: 0px;
-  }
-  }
-
-  @media (max-width: 840px) {
+  @media (max-width: 910px) {
     ul {
     font-size: 10px;
   }
   }
 
-
+  @media (max-width: 829px) {
+    ul {
+    font-size: 9.9px;
+  }
+  }
   
   ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-justify-content: flex-start; /* Aligns items to the start */
-}
-
-
-
-.nav-right {
-display: flex; /* Keep items aligned horizontally */
-align-items: center; /* Vertically center items */
-margin-left: auto; /* Pushes the nav-right to the right */
-}
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
   li {
     margin: 5px 10px;
     position: relative;
   }
   li a {
     display: block;
-    color: #333843;
-    text-align: start;
+    color: rgb(0, 0, 0);
+    text-align: center;
     text-decoration: none;
-    font-weight: 700;
   }
   .nav a.active {
     font-weight: bold;
@@ -200,22 +180,21 @@ margin-left: auto; /* Pushes the nav-right to the right */
     border-radius: 5px;
   }
   .button {
-    background-color: #ffffff;
+    background-color: #ffffff00;
     border: none;
-    color: #333843;
+    color: rgb(0, 0, 0);
     padding: 8px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
     border-radius: 5px;
-    font-weight: 700;
   }
   .button_top{
     background-color: #ffffff00;
     border: none;
   }
-  .table_button_approved {
+  .table_button_unpaid {
     background-color: #FEF8E5;
     border: none;
     color: #E2B102;
@@ -227,9 +206,9 @@ margin-left: auto; /* Pushes the nav-right to the right */
     border-radius: 5px;
   }
   .table_button_pending {
-    background-color: #FFE5DF;
+    background-color: #F6FCFF;
     border: none;
-    color: #FF5C00;
+    color: #7795FF;
     padding: 8px 12px;
     text-align: center;
     text-decoration: none;
@@ -237,42 +216,6 @@ margin-left: auto; /* Pushes the nav-right to the right */
     cursor: pointer;
     border-radius: 5px;
   }
-
-  .table_button_paid {
-    background-color: #F0EFFE;
-    border: none;
-    color: #8B83FF;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .table_button_completed {
-    background-color: #E1FFD7;
-    border: none;
-    color: #37CE00;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .table_button_rejected {
-    background-color: #FFDFDF;
-    border: none;
-    color: #FF1400;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
   .button i {
     margin-right: 5px;
   }
@@ -284,7 +227,8 @@ margin-left: auto; /* Pushes the nav-right to the right */
     display: flex;
     justify-content: space-between; /* Spread content across the nav-background */
     align-items: center;
-    padding: 0 10px; /* Add padding for spacing */
+    padding: 0 20px; /* Add padding for spacing */
+    height: 50px; /* Set a fixed height for the nav_background */
   }
   .nav_text {
     display: flex;
@@ -329,45 +273,58 @@ margin-left: auto; /* Pushes the nav-right to the right */
   display: none; /* Hidden for screens larger than 767px */
 }
 }
-
-.table_data {
-color: #333843;
-font-weight: 700;
+.table-background ul {
+justify-content: flex-start; /* Align items to the left */
+text-align: left; /* Ensure text aligns to the left */
 }
 
-th {
-color: #333843;
-font-weight: 600;
+.table-background li {
+margin: 5px 0; /* Adjust margins if needed */
 }
 
-.filter-container {
-position: absolute;
-display: inline-block;
+.table-background img {
+margin-right: 10px; /* Add some spacing between image and text */
 }
 
-.filter-list {
-display: none;
-position: absolute;
-top: 40px; /* Adjust as per your layout */
-right: 0;
-background-color: white;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-list-style-type: none;
-padding: 10px 0;
-border-radius: 5px;
-z-index: 9999;
-width: 150px;
+.rectangle {
+width: 100%;
+height: auto; /* Change to auto for dynamic height based on content */
+background-color: #F8F8F8; /* You can change the color as needed */
+margin-bottom: 20px; /* Add some space below the rectangle */
+border-radius: 10px; /* Rounded corners */
+margin-top: 15px;
+padding: 15px; /* Add padding for inside spacing */
+}
+.rectangle div {
+margin-bottom: 10px; /* Space between text elements */
 }
 
-.filter-list li {
-padding: 8px 16px;
+.heading{
+  font-weight: bold;
+  font-size: larger;
+
 }
 
-.filter-list li a {
-text-decoration: none;
-color: black;
-}
+.Submit_button {
+    margin-top: 10px;
+    background-color: #FF8F77;
+    border: 0;
+    color: #ffffff;
+    border-radius: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 
-.filter-list li a:hover {
-background-color: #f0f0f0;
-}
+.footer {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #2B3674; /* Updated color */
+    font-weight: 800;
+    position: fixed; /* Make footer fixed */
+    bottom: 0; /* Stick to the bottom */
+    background-color: #f7f5ff; /* Match background color */
+    padding: 10px 0; /* Add padding */
+  }
