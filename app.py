@@ -2,13 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from database import Database as Mydatabase
 
 app = Flask(__name__)
+app.secret_key = 'Anjali#123'
 
 name = ''
 mail = ''
+is_admin = ''
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    global name, mail
+    global name, mail, is_admin
     connection = Mydatabase.connect_dbs()
     cursor = connection.cursor()
 
@@ -17,6 +19,7 @@ def login():
         password = request.form['password']
 
         cursor.execute('SELECT * FROM user WHERE email = %s AND password = %s', (email, password))
+
         user = cursor.fetchone()
         print("user  ",user)
         connection.commit()
@@ -24,7 +27,7 @@ def login():
         if user:
             name = user[2]
             mail = user[3]
-
+            is_admin = user[6]
             print("name", name)
             print("mail", mail)
             return redirect(url_for('dashboard')) 
@@ -36,8 +39,9 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
-    global name, mail
-    return render_template('dashboard.html', name = name, mail = mail)  
+    global name, mail, is_admin
+    dashboard_name = "ADMIN DASHBOARD" if is_admin == 1 else "USER DASHBOARD"
+    return render_template('dashboard.html', name = name, mail = mail, dashboard_name=dashboard_name)  
 
 @app.route('/add_payment')
 def add_payment():
