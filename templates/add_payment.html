@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f7f5ff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+    .sidebar {
+      width: 80px;
+      background-color: #ffffff;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+    }
+    .sidebar.show {
+      transform: translateX(0);
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #6c757d;
+      font-weight: 500;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .footer {
+      margin-top: auto;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #6c757d;
+      padding: 10px 0;
+      background-color: #f7f5ff;
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 80px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 768px) {
+      .sidebar {
+        transform: translateX(0);
+      }
+      #sidebarToggle {
+        display: none;
+      }
+      .close-btn {
+        display: none;
+      }
+    }
+    @media (max-width: 767px) {
+      #sidebarToggle {
+        display: flex;
+      }
+      .close-btn {
+        display: none;
+      }
+      .sidebar.show .close-btn {
+        display: block;
+      }
+      .nav {
+        display: none;
+      }
+      .table-container {
+        padding: 0px;
+      }
+      .main-content {
+        margin-left: 0px;
+        padding-top: 0px;
+      }
+    }
+    @media (max-width: 620px) {
+      .table_data {
+        display: none;
+      }
+    }
+
+    @media (max-width: 2220px) {
+      ul {
+ 
+      gap: 35px;
+    }
+    }
+
+    @media (max-width: 1400px) {
+      ul {
+      font-size: 12px;
+      gap: 10px;
+    }
+    }
+
+    @media (max-width: 1120px) {
+      ul {
+      font-size: 12px;
+      gap: 0px;
+    }
+    }
+
+    @media (max-width: 840px) {
+      ul {
+      font-size: 10px;
+    }
+    }
+
+ 
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      
+    }
+    li {
+      margin: 5px 10px;
+      position: relative;
+    }
+    li a {
+      display: block;
+      color: #333843;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .nav a.active {
+      font-weight: bold;
+      color: #3965FF;
+    }
+
+    .nav a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #001D83;
+      bottom: -5px;
+      left: 0;
+    }
+
+    li input[type="text"] {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button {
+      background-color: #ffffff;
+      border: none;
+      color: #333843;
+      padding: 8px 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: 700;
+    }
+    .button_top{
+      background-color: #ffffff00;
+      border: none;
+    }
+
+    .button i {
+      margin-right: 5px;
+    }
+    .nav_background {
+      background-color: #ffffff;
+      border-radius: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between; /* Spread content across the nav-background */
+      align-items: center;
+      padding: 0 10px; /* Add padding for spacing */
+    }
+    .nav_text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for aesthetics */
+    width: 100%;
+    max-width: 60%;
+    max-height: 80%;
+  }
+  .form-control::placeholder {
+  color: #a1a1a1;
+}
+
+.form-control {
+  color: #a1a1a1;
+}
+.label_text{
+    color: #333843;
+    font-weight: 700;
+  }
+
+  .Submit_button {
+      margin-top: 10px;
+      background-color: #3965FF;
+      border: 0;
+      color: #ffffff;
+      border-radius: 5px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toggle Button -->
+  <button class="btn" id="sidebarToggle">
+    <img src="../static/img/menu1.png" alt="" height="10">
+  </button>
+  
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <button class="btn btn-close close-btn" id="closeSidebar" aria-label="Close sidebar"></button>
+    <a href="#" style="margin-top: 80px;">🧾<br>Invoice</a>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
+  </div>
+  
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <div class="nav_background">
+      <!-- Move Invoice to the left -->
+      <div class="nav_text"><b>ADMIN DASHBOARD </b></div>
+      <ul>
+        <!-- <li><button class="button"><img src="../Static/images/search.png"></button></li> -->
+        <li><button class="button"><img src="../static/img/bell.png"></button></li>
+        <li><button class="button"><img src="../ /img/Avatar_Small.png"></button></li>
+        <li>
+          <div><b>Shilpa</b></div>
+          <div>shilpa@evoluzn.in</div>
+        </li>
+      </ul>
+    </div>
+    <div class="container mt-5" >
+    
+
+    <!-- Form for submitting item and payment details -->
+<form id="paymentForm" class="custom-form" onsubmit="return validateForm(event);">
+  <div class="form-group mt-4 mb-4">
+      <label for="itemName" class="label_text mb-2">Item Name</label>
+      <input type="text" class="form-control" id="itemName" placeholder="Enter item name">
+  </div>
+
+  <div class="form-group mb-4">
+      <label for="itemDetails" class="label_text mb-2">Item Details</label>
+      <textarea class="form-control" id="itemDetails" placeholder="Enter item details"></textarea>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="quantity" class="label_text mb-2">Vendor Name</label>
+    <textarea class="form-control" id="itemDetails" placeholder="Enter Name"></textarea>
+</div>
+
+  <div class="form-group mb-4">
+      <label for="quantity" class="label_text mb-2">Quantity</label>
+      <input type="number" class="form-control" id="quantity" placeholder="Enter quantity">
+  </div>
+
+  <div class="form-group mb-4">
+      <label for="Amount" class="label_text mb-2">Amount</label>
+      <input type="number" class="form-control amount" id="Amount" placeholder="Enter Amount">
+  </div>
+
+  <div class="form-group mb-4">
+      <label for="paymentMethod" class="label_text mb-2">Payment Method</label>
+      <select class="form-control" id="paymentMethod" onchange="handlePaymentMethodChange()">
+          <option value="cash">Cash/UPI</option>
+          <option value="bank">Bank</option>
+          <option value="card">Card</option>
+      </select>
+  </div>
+
+  <!-- Upload field for Purchase Order (PO) if Bank is selected -->
+  <div class="form-group" id="poUploadDiv" style="display: none;">
+    <div class="form-group mt-4 mb-4">
+      <label for="itemName" class="label_text mb-2">Invoice Number</label>
+      <input type="text" class="form-control" id="invoice_number" placeholder="Enter Number">
+  </div>
+      <label for="poUpload">Upload Purchase Order (PO)</label>
+      <input type="file" class="form-control-file" id="poUpload">
+   
+  </div>
+
+  <div class="text-end mt-3 pb-5">
+      <button type="submit" class="Submit_button" style="text-decoration: none;">
+          Submit
+      </button>
+  </div>
+</form>
+
+<!-- Error Message Container -->
+<div id="errorMessage" style="color: red; display: none; margin-top: 10px;"></div>
+    </div>
+
+  
+      </div>
+
+
+  <!-- Footer -->
+  <div class="footer">
+    Powered By EVOLUZN
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+let invoices = [];
+
+// Function to handle form submission
+document.getElementById("paymentForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+  const itemName = document.getElementById("itemName").value;
+  const itemDetails = document.getElementById("itemDetails").value;
+  const quantity = document.getElementById("quantity").value;
+  const paymentMethod = document.getElementById("paymentMethod").value;
+  
+  let poFile = '';
+  if (paymentMethod === 'bank') {
+    poFile = document.getElementById("poUpload").files[0]?.name;
+  }
+
+  const newInvoice = {
+    name: itemName,
+    date: new Date().toLocaleDateString(),
+    status: 'Pending', // Initial status is 'Pending'
+    itemDetails: itemDetails,
+    quantity: quantity,
+    paymentMethod: paymentMethod,
+    poFile: poFile
+  };
+  
+  // Push the new invoice to the invoices array
+  invoices.push(newInvoice);
+  
+  // Update the user invoice table
+  updateInvoiceTable();
+  
+  // Notify the admin dashboard to update
+  loadAdminInvoices();
+
+  // Reset form and hide PO upload field
+  document.getElementById("paymentForm").reset();
+  document.getElementById("poUploadDiv").style.display = 'none';
+});
+
+// Show/hide PO upload based on payment method
+function handlePaymentMethodChange() {
+  const paymentMethod = document.getElementById("paymentMethod").value;
+  const poUploadDiv = document.getElementById("poUploadDiv");
+  poUploadDiv.style.display = (paymentMethod === 'bank') ? 'block' : 'none';
+}
+
+function validateForm(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Clear previous error message
+        const errorMessageDiv = document.getElementById('errorMessage');
+        errorMessageDiv.style.display = 'none';
+        errorMessageDiv.innerHTML = '';
+
+        // Get form values
+        const itemName = document.getElementById('itemName').value.trim();
+        const itemDetails = document.getElementById('itemDetails').value.trim();
+        const quantity = document.getElementById('quantity').value.trim();
+        const amount = document.getElementById('Amount').value.trim();
+        const paymentMethod = document.getElementById('paymentMethod').value;
+
+        // Validate required fields
+        if (!itemName || !itemDetails || !quantity || !amount || !paymentMethod) {
+            errorMessageDiv.innerHTML = 'Please fill in all required fields.';
+            errorMessageDiv.style.display = 'block';
+            return false; // Prevent form submission
+        }
+
+        // Optional: Add any other validation for the file upload if required
+
+        // Redirect to invoice dashboard on successful validation
+        window.location.href = 'invoice_dashboard.html';
+    }
+  </script>
+  
+</body>
+</html>
