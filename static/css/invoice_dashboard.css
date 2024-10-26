@@ -1,7 +1,6 @@
 ul {
     justify-content: flex-start; /* Aligns items to the start */
     }
-  
     .nav-right {
     display: flex; /* Keep items aligned horizontally */
     align-items: center; /* Vertically center items */
@@ -10,7 +9,7 @@ ul {
       li a {
         display: block;
         color: #333843;
-        text-align: start;
+        text-align: center;
         text-decoration: none;
         font-weight: 700;
       }
@@ -134,48 +133,6 @@ ul {
   background-color: #f0f0f0;
   }
   
-.table_data {
-  color: #333843;
-  font-weight: 700;
-  }
-  
-  th {
-  color: #333843;
-  font-weight: 600;
-  }
-  
-  .filter-container {
-  position: absolute;
-  display: inline-block;
-  }
-  
-  .filter-list {
-  display: none;
-  position: absolute;
-  top: 40px; /* Adjust as per your layout */
-  right: 0;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  list-style-type: none;
-  padding: 10px 0;
-  border-radius: 5px;
-  z-index: 9999;
-  width: 150px;
-  }
-  
-  .filter-list li {
-  padding: 8px 16px;
-  }
-  
-  .filter-list li a {
-  text-decoration: none;
-  color: black;
-  }
-  
-  .filter-list li a:hover {
-  background-color: #f0f0f0;
-  }
-  
   @media (min-width: 768px) {
     .sidebar {
       transform: translateX(0);
@@ -198,28 +155,34 @@ ul {
     }
   }
 
-  @media (max-width: 1020px) {
+  @media (max-width: 2220px) {
     ul {
-    font-size: 10px;
-    gap: 0px;
+
+    gap: 35px;
   }
   }
 
-  @media (max-width: 1260px) {
+  @media (max-width: 1400px) {
     ul {
-    font-size: 13px;
+    font-size: 12px;
+    gap: 10px;
+  }
+  }
+
+  @media (max-width: 1120px) {
+    ul {
+    font-size: 12px;
     gap: 0px;
   }
   }
 
   @media (max-width: 840px) {
     ul {
-    font-size: 13px;
+    font-size: 10px;
   }
   }
 
   /* Existing styles */
-
 
 @media (max-width: 338px) {
 .button {
@@ -233,15 +196,5 @@ ul {
 @media (min-width: 768px) {
 .button_top {
   display: none;
-}
-}
-@media (max-width: 1150px) {
-  ul {
-  font-size: 12px;
-}
-}
-@media (max-width: 1110px) {
-  .nav-right {
-    
 }
 }

@@ -11,25 +11,29 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/invoice.css">
+  <link rel="stylesheet" href="../static/css/header.css">
 </head>
 <body>
+<!-- Header -->
+<div class="header">
+  <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
+</div>
 
   <!-- Toggle Button -->
-  <button class="btn" id="sidebarToggle">
-    <img src="../static/img/menu1.png" alt="" height="10">
-  </button>
-  
+  <div class="top_bar">
+    <button class="btn" id="sidebarToggle">
+      <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
+    </button>
+    <button class="bell">
+      <img src="../static/img/bell.png" alt="bell">
+    </button>
+  </div>
 
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <button class="btn btn-close close-btn" id="closeSidebar" aria-label="Close sidebar"></button>
-    <a href="{{ url_for('dashboard') }}" style="margin-top: 80px;">🧾<br>Invoice</a>
-  </div>
-  
-
-  <!-- Header -->
-  <div class="header">
-    <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
+    <a href="#" style="margin-top: 80px;">🧾<br>Invoice</a>
+    <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
   </div>
   
   <!-- Main Content -->
@@ -38,9 +42,7 @@
       <!-- Move Invoice to the left -->
       <div class="nav_text"><b id="dashboardName">{{ dashboard_name }}</b></div>
       <ul>
-        <!-- <li><button class="button"><img src="../Static/images/search.png"></button></li> -->
-        <li><button class="button"><img src="../static/img/bell.png"></button></li>
-        <li><button class="button"><img src="../static/img/Avatar_Small.png"></button></li>
+        <li><button class="button_profile"><img src="../static/img/Avatar_Small.png"></button></li>
         <li>
           <div><b>{{name}}</b></div>
           <div>{{ mail }}</div>
@@ -104,8 +106,6 @@
                  
                 </ul>
               </li>
-            
-            
             </div>
           
         </ul>

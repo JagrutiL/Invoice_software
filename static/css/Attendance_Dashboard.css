@@ -1,0 +1,349 @@
+ .nav-right {
+      display: flex; /* Keep items aligned horizontally */
+      align-items: center; /* Vertically center items */
+      margin-left: auto; /* Pushes the nav-right to the right */
+  }
+  li a {
+    display: block;
+    color: #333843;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .nav a.active {
+    font-weight: bold;
+    color: #3965FF;
+  }
+
+  .nav a.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #001D83;
+    bottom: -5px;
+    left: 0;
+  }
+
+  li input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60%;
+  }
+  .button_plus{
+    background-color: #ffffff;
+    border: none;
+    color: #333843;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .button_plus_2{
+    background-color: #ffffff;
+    border: none;
+    color: #333843;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .button_top{
+    background-color: #ffffff00;
+    border: none;
+  }
+  .table_button_approved {
+    background-color: #FEF8E5;
+    border: none;
+    color: #E2B102;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .table_button_pending {
+    background-color: #FFE5DF;
+    border: none;
+    color: #FF5C00;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .table_button_paid {
+    background-color: #F0EFFE;
+    border: none;
+    color: #8B83FF;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .table_button_completed {
+    background-color: #E1FFD7;
+    border: none;
+    color: #37CE00;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .table_button_rejected {
+    background-color: #FFDFDF;
+    border: none;
+    color: #FF1400;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .button i {
+    margin-right: 5px;
+  }
+  .nav_background {
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  }
+  .nav-right {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+  }
+  .button_top {
+      margin-left: auto;
+  }
+  .nav_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bill{
+    width: 25px; 
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .table_data {
+  color: #333843;
+  font-weight: 700;
+  }
+  th {
+  color: #333843;
+  font-weight: 600;
+  }
+  .filter-container {
+  position: absolute;
+  display: inline-block;
+  }
+  .filter-list {
+  display: none;
+  position: absolute;
+  top: 40px; /* Adjust as per your layout */
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  z-index: 9999;
+  width: 150px;
+  }
+  .filter-list li {
+  padding: 8px 16px;
+  }
+  .filter-list li a {
+  text-decoration: none;
+  color: black;
+  }
+  .filter-list li a:hover {
+  background-color: #f0f0f0;
+  }
+  .filter_image{
+  width: 70%;
+  }
+  .form-group1 {
+  display: flex;
+  align-items: center; /* Vertically centers the content */
+  padding: 5px 10px; /* Adjust padding as needed */
+  }
+  .form-group {
+  display: flex;
+  align-items: center; /* Vertically centers the content */
+  padding: 5px 10px; /* Adjust padding as needed */
+  }
+  .form-group1 textarea {
+  height: 30px; /* Keep the desired height */
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%; /* Ensure it takes the full width */
+  }
+  .form-group textarea {
+  height: 200px; /* Adjust the height to your preferred size */
+  padding: 5px 10px; /* Modify the padding for a smaller input look */
+  font-size: 14px; /* Optionally adjust the font size */
+  padding-top: 0px;
+  font-weight: bold;
+  }
+  .Submit_button {
+  margin-top: 10px;
+  background-color: #3965FF;
+  font-weight: bold;
+  border: 0;
+  color: #ffffff;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  }
+
+  .calander {
+  position: relative; /* Set to relative to position the icon inside it */
+  display: flex;
+  justify-content: end;
+  }
+  .calander input#dateRange {
+  border: 2px solid #DEDEDE; /* Border color and thickness */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 30px 8px 12px; /* Inner padding; adjust left padding for icon space */
+  font-weight: bold;
+  font-size: small;
+  color: #636363;
+  justify-content: end;
+  text-align: center;
+  width: 10%; /* Allow it to take full width of parent */
+  }
+  .calander i.fa-calendar {
+  position: absolute;
+  right: 10px; /* Position the icon on the right side */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+  pointer-events: none; /* So the icon doesn't block interactions with the input */
+  color: #999; /* Adjust the icon color if needed */
+  }
+      @media (max-width: 338px) {
+      .button {
+          padding: 5px 5px;
+          }
+          ul {
+          justify-content: center;
+          }
+      }
+      @media (max-width: 620px) {
+          .table_data {
+              display: none;
+          }
+          }
+      @media (min-width: 768px) {
+          .sidebar {
+              transform: translateX(0);
+          }
+          #sidebarToggle {
+              display: none;
+          }
+          .close-btn {
+              display: none;
+          }
+          .button_top , .dateRange_2,
+          .button_plus_2{
+          display: none; /* Hidden for screens larger than 767px */
+      }
+          }    
+      @media (max-width: 767px) {
+          #sidebarToggle {
+              display: flex;
+          }
+          .close-btn {
+              display: none;
+          }
+          .sidebar.show .close-btn {
+              display: block;
+          }
+
+          .table-container {
+              padding: 0px;
+          }
+          .main-content {
+              margin-left: 0px;
+              padding-top: 0px;
+          }
+          .nav_background{
+              background-color: #ffffff;
+              display: none;
+          }
+          .ul{
+              justify-content: end;
+              align-items: end;
+          }
+
+          .button_top{
+              justify-content: end;
+          }
+          
+          .button_top .dateRange_2
+          .button_plus_2{
+          display: inline-block; /* Visible for screens smaller than 767px */
+      }
+      li {
+          margin: 5px 5px;
+          position: relative;
+          }
+          }    
+          
+          
+      @media (max-width: 840px) {
+          ul {
+          font-size: 10px;
+          }
+          }   
+
+      @media (max-width: 1070px) {
+          ul {
+          font-size: 12px;
+          }
+          }    
+
+
+          @media (max-width: 874px) {
+          ul {
+          font-size: 10px;
+          }
+          } 
+
+      @media (max-width: 776px) {
+          ul {
+          font-size: 10px;
+          }
+          } 
