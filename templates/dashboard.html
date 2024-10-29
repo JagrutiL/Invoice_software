@@ -15,19 +15,20 @@
 </head>
 <body>
 <!-- Header -->
-<div class="header">
-  <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
-</div>
+
 
   <!-- Toggle Button -->
-  <div class="top_bar">
-    <button class="btn" id="sidebarToggle">
-      <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
-    </button>
-    <button class="bell">
-      <img src="../static/img/bell.png" alt="bell">
-    </button>
-  </div>
+<div class="header">
+  <button class="btn" id="sidebarToggle">
+    <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
+  </button>
+  
+  <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
+  <button class="bell">
+    <img src="../static/img/bell.png" alt="bell">
+  </button>
+</div>
+
 
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
@@ -59,7 +60,7 @@
              
               <li><a href="#" data-status="all" class="active">All Payments</a></li>
               <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
-              <li><a href="#" data-status="pending">Pending</a></li>
+              <li><a href="#" data-status="pending">Pending for Payment</a></li>
               <li><a href="#" data-status="approved">Approved</a></li>
               <li><a href="#" data-status="payment-done">Payment Done</a></li>
               <li><a href="#" data-status="completed">Completed</a></li>
@@ -98,7 +99,7 @@
                   <li><a href="#" data-status="all">All Payments</a></li> 
                   <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
                  
-                  <li><a href="#" data-status="pending">Pending</a></li>
+                  <li><a href="#" data-status="pending">Pending for Payment</a></li>
                   <li><a href="#" data-status="approved">Approved</a></li>
                   <li><a href="#" data-status="payment done">Payment Done</a></li>
                   <li><a href="#" data-status="completed">Completed</a></li>
@@ -195,8 +196,7 @@
   <!-- Footer -->
   <div class="footer">
     Powered By EVOLUZN
-  </div>
-
+  </div> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // DOM elements
@@ -209,13 +209,13 @@
 
   // Sidebar Toggle Functionality
   sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.add('show');
-    mainContent.classList.add('shift');
+    sidebar.classList.toggle('show'); // Toggle sidebar visibility
+    mainContent.classList.toggle('shift'); // Shift main content
   });
 
   closeSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('show');
-    mainContent.classList.remove('shift');
+    sidebar.classList.remove('show'); // Hide sidebar
+    mainContent.classList.remove('shift'); // Reset main content position
   });
 
   // Navigation Links Click Handling (for both Sidebar and Filtering)
