@@ -18,16 +18,16 @@
                 <div class="form-content">
                     <h3 class="Title mb-0">Welcome Back</h3>
                     <h3 class="Sub_Title">Please log in to your account</h3>
-                    <form id="loginForm">
+                    <form id="loginForm" ction="/" method="post">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email_login" name="login_email">
+                            <input type="email" class="form-control" id="email" name="email">
                             <div id="email_error" class="warning-message"></div>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="password_login" name="login_password">
+                                <input type="password" class="form-control" id="password" name="password">
                                 <div class="input-group-append">
                                     <span class="input-group-text toggle-password">
                                         <img src="../static/img/eye.png" alt="Toggle Password" id="togglePassword" width="20">
@@ -60,8 +60,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
-            var email = document.getElementById("email_login").value;
-            var password = document.getElementById("password_login").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
             var emailError = document.getElementById("email_error");
             var passwordError = document.getElementById("password_error");
 
