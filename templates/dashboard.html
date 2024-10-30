@@ -14,20 +14,18 @@
   <link rel="stylesheet" href="../static/css/header.css">
 </head>
 <body>
-<!-- Header -->
-
 
   <!-- Toggle Button -->
-<div class="header">
-  <button class="btn" id="sidebarToggle">
-    <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
-  </button>
-  
-  <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
-  <button class="bell">
-    <img src="../static/img/bell.png" alt="bell">
-  </button>
-</div>
+  <div class="header">
+    <button class="btn" id="sidebarToggle">
+      <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
+    </button>
+    
+    <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
+    <button class="bell">
+      <img src="../static/img/bell.png" alt="bell">
+    </button>
+  </div>
 
 
   <!-- Sidebar -->
@@ -36,7 +34,7 @@
     <a href="#" style="margin-top: 80px;">🧾<br>Invoice</a>
     <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
   </div>
-  
+
   <!-- Main Content -->
   <div class="main-content" id="mainContent">
     <div class="nav_background">
@@ -76,7 +74,7 @@
                     <img src="../static/img/calendar1.png" alt="Select Range" >
                 </button>
             </li>
-                <li class="button" style="position: absolute;z-index: 99999;margin-left: -180px;">
+                <li class="button" style="position: absolute;margin-left: -180px;">
               <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Employee <span class="caret"></span></a>
               <ul class="filter-list dropdown-menu" > 
                   <li><a href="#">Shilpa</a></li>
@@ -159,8 +157,6 @@
                   <button class="btn btn-danger deny-button">Deny</button>
               </td>
           </tr>
-          
-            
                 <tr data-status="payment-done">
                   <td><img class="bill" src="../static/img/logo_1.png"></td>
                   <td>Product 3</td>
@@ -183,13 +179,9 @@
                   <td><button class="table_button_rejected"><b>Rejected</b></button></td>
                 </tr>
               </tbody>
-              
             </table>
           </div>
         </div>
-
-    
-   
     </div>
 
 
@@ -200,12 +192,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // DOM elements
-  const sidebar = document.getElementById('sidebar');
   const mainContent = document.getElementById('mainContent');
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  const closeSidebar = document.getElementById('closeSidebar');
   const navLinks = document.querySelectorAll('#navList a'); 
   const tableRows = document.querySelectorAll('#invoiceTable tr');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const closeSidebar = document.getElementById('closeSidebar');
 
   // Sidebar Toggle Functionality
   sidebarToggle.addEventListener('click', () => {

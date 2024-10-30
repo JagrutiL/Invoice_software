@@ -1,159 +1,171 @@
 ul {
-    justify-content: center;
+  justify-content: center;
+}
+li a {
+  display: block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+}
+.label_text{
+  font-weight: bolder;
+  font-size: medium;
+}
+.container{
+  max-width: 1500px;
+}
+.button_top{
+  background-color: #ffffff00;
+  border: none;
+}
+.status-section{
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.table_button_unpaid {
+  background-color: #FEF8E5;
+  border: none;
+  color: #E2B102;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.table_button_pending {
+  background-color: #F6FCFF;
+  border: none;
+  color: #7795FF;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.button i {
+  margin-right: 5px;
+}
+.nav_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bill{
+  width: 25px; 
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.table-background ul {
+  justify-content: flex-start; /* Align items to the left */
+  text-align: left; /* Ensure text aligns to the left */
   }
-  li a {
-    display: block;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    text-decoration: none;
+  
+  .table-background li {
+  margin: 5px 0; /* Adjust margins if needed */
   }
-  .button_top{
-    background-color: #ffffff00;
-    border: none;
+  
+  .table-background img {
+  margin-right: 10px; /* Add some spacing between image and text */
   }
-  .table_button_unpaid {
-    background-color: #FEF8E5;
-    border: none;
-    color: #E2B102;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 5px;
+  
+  .rectangle {
+  width: 100%;
+  height: auto; /* Change to auto for dynamic height based on content */
+  background-color: #F8F8F8; /* You can change the color as needed */
+  margin-bottom: 20px; /* Add some space below the rectangle */
+  border-radius: 10px; /* Rounded corners */
+  margin-top: 15px;
+  padding: 15px; /* Add padding for inside spacing */
   }
-  .table_button_pending {
-    background-color: #F6FCFF;
-    border: none;
-    color: #7795FF;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    border-radius: 5px;
+  .rectangle div {
+  margin-bottom: 10px; /* Space between text elements */
   }
-  .button i {
-    margin-right: 5px;
+  
+  .heading{
+    font-weight: bold;
+    font-size: larger;
+  
   }
-  .nav_text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  
+  .Submit_button {
+      margin-top: 10px;
+      background-color: #FF8F77;
+      border: 0;
+      color: #ffffff;
+      border-radius: 5px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  
+  .footer {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #2B3674; /* Updated color */
+      font-weight: 800;
+      position: fixed; /* Make footer fixed */
+      bottom: 0; /* Stick to the bottom */
+      background-color: #f7f5ff; /* Match background color */
+      padding: 10px 0; /* Add padding */
+    }
+@media (min-width: 768px) {
+  .sidebar {
+    transform: translateX(0);
   }
-  .bill{
-    width: 25px; 
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  #sidebarToggle {
+    display: none;
   }
-  .table-background ul {
-    justify-content: flex-start; /* Align items to the left */
-    text-align: left; /* Ensure text aligns to the left */
-    }
-    
-    .table-background li {
-    margin: 5px 0; /* Adjust margins if needed */
-    }
-    
-    .table-background img {
-    margin-right: 10px; /* Add some spacing between image and text */
-    }
-    
-    .rectangle {
-    width: 100%;
-    height: auto; /* Change to auto for dynamic height based on content */
-    background-color: #F8F8F8; /* You can change the color as needed */
-    margin-bottom: 20px; /* Add some space below the rectangle */
-    border-radius: 10px; /* Rounded corners */
-    margin-top: 15px;
-    padding: 15px; /* Add padding for inside spacing */
-    }
-    .rectangle div {
-    margin-bottom: 10px; /* Space between text elements */
-    }
-    
-    .heading{
-      font-weight: bold;
-      font-size: larger;
-    
-    }
-    
-    .Submit_button {
-        margin-top: 10px;
-        background-color: #FF8F77;
-        border: 0;
-        color: #ffffff;
-        border-radius: 5px;
-        padding-left: 50px;
-        padding-right: 50px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
-    
-    .footer {
-        width: 100%;
-        text-align: center;
-        font-size: 14px;
-        color: #2B3674; /* Updated color */
-        font-weight: 800;
-        position: fixed; /* Make footer fixed */
-        bottom: 0; /* Stick to the bottom */
-        background-color: #f7f5ff; /* Match background color */
-        padding: 10px 0; /* Add padding */
-      }
-  @media (min-width: 768px) {
-    .sidebar {
-      transform: translateX(0);
-    }
-    #sidebarToggle {
-      display: none;
-    }
-    .close-btn {
-      display: none;
-    }
+  .close-btn {
+    display: none;
   }
-  @media (max-width: 767px) {
-    .nav_background{
-      background-color: #ffffff;
-    }
+}
+@media (max-width: 767px) {
+  .nav_background{
+    background-color: #ffffff;
   }
-  @media (max-width: 620px) {
-    .table_data {
-      display: none;
-    }
+}
+@media (max-width: 620px) {
+  .table_data {
+    display: none;
   }
+}
 
-  @media (max-width: 1060px) {
-    ul {
-    font-size: 12px;
-  }
-  }
+@media (max-width: 1060px) {
+  ul {
+  font-size: 12px;
+}
+}
 
-  @media (max-width: 910px) {
-    ul {
-    font-size: 10px;
-  }
-  }
+@media (max-width: 910px) {
+  ul {
+  font-size: 10px;
+}
+}
 
-  @media (max-width: 829px) {
-    ul {
-    font-size: 9.9px;
-  }
-  }
-  /* Existing styles */
+@media (max-width: 829px) {
+  ul {
+  font-size: 9.9px;
+}
+}
+/* Existing styles */
 @media (max-width: 338px) {
 .button {
-    padding: 8px 5px;
-  }
-  ul {
-    justify-content: center;
-  }
+  padding: 8px 5px;
+}
+ul {
+  justify-content: center;
+}
 }
 
 @media (min-width: 768px) {
 .button_top {
-  display: none;
+display: none;
 }
 }
