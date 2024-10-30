@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="../static/css/invoice.css">
   <link rel="stylesheet" href="../static/css/header.css">
 </head>
+
 <body>
 <!-- Header -->
 <div class="header">
@@ -20,22 +22,17 @@
 </div>
 
   <!-- Toggle Button -->
-  <div class="top_bar">
-    <button class="btn" id="sidebarToggle">
-      <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
-    </button>
-    <button class="bell">
-      <img src="../static/img/bell.png" alt="bell">
-    </button>
-  </div>
+  <button class="btn" id="sidebarToggle">
+    <img src="../static/img/menu1.png" alt="" height="10">
+  </button>
+
 
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <button class="btn btn-close close-btn" id="closeSidebar" aria-label="Close sidebar"></button>
-    <a href="#" style="margin-top: 80px;">🧾<br>Invoice</a>
-    <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
+    <a href="{{ url_for('dashboard') }}" style="margin-top: 80px;">🧾<br>Invoice</a>
   </div>
-  
+
   <!-- Main Content -->
   <div class="main-content" id="mainContent">
     <div class="nav_background">
@@ -50,99 +47,109 @@
       </ul>
     </div>
 
-    <div class="table-container">  
+    <div class="table-container">
 
-        <ul>
-          <div class="nav">
-          
-            <ul id="navList">
-             
-              <li><a href="#" data-status="all" class="active">All Payments</a></li>
+      <ul>
+        <div class="nav">
+
+          <ul id="navList">
+
+            <li><a href="#" data-status="all" class="active">All Payments</a></li>
+            {% if is_admin == 1 %}
+            <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
+            {% endif %}
+            <li><a href="#" data-status="pending">Pending</a></li>
+            <li><a href="#" data-status="approved">Approved</a></li>
+            <li><a href="#" data-status="payment-done">Payment Done</a></li>
+            <li><a href="#" data-status="completed">Completed</a></li>
+            <li><a href="#" data-status="rejected">Rejected</a></li>
+
+
+
+          </ul>
+        </div>
+        <div class="nav-right">
+          <li class="button">
+            <button id="dateRange" type="button" style="background: none; border: none; cursor: pointer;">
+              <img src="../static/img/calendar1.png" alt="Select Range">
+            </button>
+          </li>
+          {% if is_admin == 1 %}
+          <li class="button" style="position: absolute;z-index: 99999;margin-left: -180px;">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Employee <span
+                class="caret"></span></a>
+            <ul class="filter-list dropdown-menu">
+              {% for item in emp %}
+              <li><a href="#">{{ item[0] }}</a></li>
+              {% endfor %}
+              <!-- <li><a href="#">Sohan</a></li>
+                  <li><a href="#">Employee 3</a></li> -->
+            </ul>
+          </li>
+          {% endif %}
+          <li>
+            <a href="{{ url_for('add_payment') }}" class="button">
+              <i class="fa fa-plus"></i>Add Payment
+            </a>
+          </li>
+
+
+          <li class="filter-container" style="margin-left: -50px;">
+            <button class="button" id="filterButton">
+              <img src="../static/img/filter.png" alt="Filter">
+            </button>
+            <ul class="filter-list" id="filterList">
+              <li><a href="#" data-status="all">All Payments</a></li>
+              {% if is_admin == 1 %}
               <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
+              {% endif %} 
               <li><a href="#" data-status="pending">Pending</a></li>
               <li><a href="#" data-status="approved">Approved</a></li>
-              <li><a href="#" data-status="payment-done">Payment Done</a></li>
+              <li><a href="#" data-status="payment done">Payment Done</a></li>
               <li><a href="#" data-status="completed">Completed</a></li>
               <li><a href="#" data-status="rejected">Rejected</a></li>
-           
-          
-            
-            </ul>
-          </div>
-            <div class="nav-right">
-              <li class="button">
-                <button id="dateRange" type="button" style="background: none; border: none; cursor: pointer;">
-                    <img src="../static/img/calendar1.png" alt="Select Range" >
-                </button>
-            </li>
-                <li class="button" style="position: absolute;z-index: 99999;margin-left: -180px;">
-              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Employee <span class="caret"></span></a>
-              <ul class="filter-list dropdown-menu" > 
-                  <li><a href="#">Shilpa</a></li>
-                  <li><a href="#">Sohan</a></li>
-                  <li><a href="#">Employee 3</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="{{ url_for('add_payment') }}" class="button">
-                  <i class="fa fa-plus"></i>Add Payment
-              </a>
-          </li>
-          
-            
-              <li class="filter-container" style="margin-left: -50px;">
-                <button class="button" id="filterButton">
-                  <img src="../static/img/filter.png" alt="Filter">
-                </button>
-                <ul class="filter-list" id="filterList"> 
-                  <li><a href="#" data-status="all">All Payments</a></li> 
-                  <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
-                 
-                  <li><a href="#" data-status="pending">Pending</a></li>
-                  <li><a href="#" data-status="approved">Approved</a></li>
-                  <li><a href="#" data-status="payment done">Payment Done</a></li>
-                  <li><a href="#" data-status="completed">Completed</a></li>
-                  <li><a href="#" data-status="rejected">Rejected</a></li>
-                 
-                </ul>
-              </li>
-            </div>
-          
-        </ul>
-        
 
-          <div class="table-background">
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th class="table_data">Date</th>     
-                  <th class="table_data">Price</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="invoiceTable">
-             
-                <tr data-status="approved">
-                  <td><img class="bill" src="../static/img/logo_1.png"></td>
-                  <td>Product 1</td>
-                  <td class="table_data">Oct 16, 2024</td>
-                  <td class="table_data">Rs. 5000/-</td>
-                  <td> <button class="table_button_approved"><b>Approved</b></button></td>
-                </tr>
-             
-               
-              <tr data-status="pending">
-                <td><img class="bill" src="../static/img/logo_1.png" alt="Product Logo"></td>
-                <td>Product 2</td>
-                <td class="table_data">Oct 16, 2024</td>
-                <td class="table_data">Rs. 5000/-</td>
-                <td>
-                    <button class="table_button_pending"><b>Pending</b></button>
-                    
-             
-                </td>
+            </ul>
+          </li>
+
+
+        </div>
+
+      </ul>
+
+
+      <div class="table-background">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th class="table_data">Date</th>
+              <th class="table_data">Price</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="invoiceTable">
+
+            <tr data-status="approved">
+              <td><img class="bill" src="../static/img/logo_1.png"></td>
+              <td>Product 1</td>
+              <td class="table_data">Oct 16, 2024</td>
+              <td class="table_data">Rs. 5000/-</td>
+              <td> <button class="table_button_approved"><b>Approved</b></button></td>
+            </tr>
+
+
+            <tr data-status="pending">
+              <td><img class="bill" src="../static/img/logo_1.png" alt="Product Logo"></td>
+              <td>Product 2</td>
+              <td class="table_data">Oct 16, 2024</td>
+              <td class="table_data">Rs. 5000/-</td>
+              <td>
+                <button class="table_button_pending"><b>Pending</b></button>
+
+
+              </td>
             </tr>
 
             <tr data-status="request">
@@ -151,45 +158,45 @@
               <td class="table_data">Oct 16, 2024</td>
               <td class="table_data">Rs. 5000/-</td>
               <td>
-                  <a href="view_product.html" class=" view-link">View</a>
+                <a href="view_product.html" class=" view-link">View</a>
               </td>
               <td>
-                  <button class="btn btn-success accept-button">Accept</button>
-                  <button class="btn btn-danger deny-button">Deny</button>
+                <button class="btn btn-success accept-button">Accept</button>
+                <button class="btn btn-danger deny-button">Deny</button>
               </td>
-          </tr>
-          
-            
-                <tr data-status="payment-done">
-                  <td><img class="bill" src="../static/img/logo_1.png"></td>
-                  <td>Product 3</td>
-                  <td class="table_data">Oct 16, 2024</td>
-                  <td class="table_data">Rs. 5000/-</td>
-                  <td><button class="table_button_paid"><b>Payment done upload Invoice</b></button></td>
-                </tr>
-                <tr data-status="completed">
-                  <td><img class="bill" src="../static/img/logo_1.png"></td>
-                  <td>Product 4</td>
-                  <td class="table_data">Oct 16, 2024</td>
-                  <td class="table_data">Rs. 5000/-</td>
-                  <td><button class="table_button_completed"><b>Completed</b></button></td>
-                </tr>
-                <tr data-status="rejected">
-                  <td><img class="bill" src="../static/img/logo_1.png"></td>
-                  <td>Product 5</td>
-                  <td class="table_data">Oct 16, 2024</td>
-                  <td class="table_data">Rs. 5000/-</td>
-                  <td><button class="table_button_rejected"><b>Rejected</b></button></td>
-                </tr>
-              </tbody>
-              
-            </table>
-          </div>
-        </div>
+            </tr>
 
-    
-   
+
+            <tr data-status="payment-done">
+              <td><img class="bill" src="../static/img/logo_1.png"></td>
+              <td>Product 3</td>
+              <td class="table_data">Oct 16, 2024</td>
+              <td class="table_data">Rs. 5000/-</td>
+              <td><button class="table_button_paid"><b>Payment done upload Invoice</b></button></td>
+            </tr>
+            <tr data-status="completed">
+              <td><img class="bill" src="../static/img/logo_1.png"></td>
+              <td>Product 4</td>
+              <td class="table_data">Oct 16, 2024</td>
+              <td class="table_data">Rs. 5000/-</td>
+              <td><button class="table_button_completed"><b>Completed</b></button></td>
+            </tr>
+            <tr data-status="rejected">
+              <td><img class="bill" src="../static/img/logo_1.png"></td>
+              <td>Product 5</td>
+              <td class="table_data">Oct 16, 2024</td>
+              <td class="table_data">Rs. 5000/-</td>
+              <td><button class="table_button_rejected"><b>Rejected</b></button></td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
     </div>
+
+
+
+  </div>
 
 
   <!-- Footer -->
@@ -200,92 +207,93 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // DOM elements
-  const sidebar = document.getElementById('sidebar');
-  const mainContent = document.getElementById('mainContent');
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  const closeSidebar = document.getElementById('closeSidebar');
-  const navLinks = document.querySelectorAll('#navList a'); 
-  const tableRows = document.querySelectorAll('#invoiceTable tr');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const closeSidebar = document.getElementById('closeSidebar');
+    const navLinks = document.querySelectorAll('#navList a');
+    const tableRows = document.querySelectorAll('#invoiceTable tr');
 
-  // Sidebar Toggle Functionality
-  sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.add('show');
-    mainContent.classList.add('shift');
-  });
+    // Sidebar Toggle Functionality
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.add('show');
+      mainContent.classList.add('shift');
+    });
 
-  closeSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('show');
-    mainContent.classList.remove('shift');
-  });
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('show');
+      mainContent.classList.remove('shift');
+    });
 
-  // Navigation Links Click Handling (for both Sidebar and Filtering)
-  navLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();  // Prevent default anchor behavior
+    // Navigation Links Click Handling (for both Sidebar and Filtering)
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();  // Prevent default anchor behavior
 
-      // Remove 'active' class from all links
-      navLinks.forEach(nav => nav.classList.remove('active'));
+        // Remove 'active' class from all links
+        navLinks.forEach(nav => nav.classList.remove('active'));
 
-      // Add 'active' class to the clicked link
-      this.classList.add('active');
+        // Add 'active' class to the clicked link
+        this.classList.add('active');
 
-      const status = this.getAttribute('data-status');  // Get status from link
+        const status = this.getAttribute('data-status');  // Get status from link
 
-      // Filter table rows based on the selected status
-      tableRows.forEach(row => {
-        const rowStatus = row.getAttribute('data-status');
-        row.style.display = (status === 'all' || rowStatus === status) ? '' : 'none';
+        // Filter table rows based on the selected status
+        tableRows.forEach(row => {
+          const rowStatus = row.getAttribute('data-status');
+          row.style.display = (status === 'all' || rowStatus === status) ? '' : 'none';
+        });
       });
     });
-  });
 
-  // Initialize Date Picker on DOM Load
-  document.addEventListener('DOMContentLoaded', () => {
-    flatpickr("#dateRange", {
-      mode: "range",
-      dateFormat: "d/m/Y",
-      onChange: (selectedDates) => {
-        const [startDate, endDate] = selectedDates;  // Destructure dates
-        console.log("Start Date:", startDate);
-        console.log("End Date:", endDate);
-      }
-    });
-  });
-
-  const filterButton = document.getElementById('filterButton');
-const filterList = document.getElementById('filterList');
-const filterLinks = document.querySelectorAll('#filterList a');
-
-// Toggle the visibility of the filter list
-filterButton.addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent click from closing immediately
-  filterList.style.display = filterList.style.display === 'block' ? 'none' : 'block';
-});
-
-// Hide filter list when clicking outside
-document.addEventListener('click', () => {
-  filterList.style.display = 'none';
-});
-
-// Apply the filter when a filter link is clicked
-filterLinks.forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent default anchor behavior
-
-    const status = this.getAttribute('data-status'); // Get status from link
-
-    // Filter table rows based on the selected status
-    tableRows.forEach(row => {
-      const rowStatus = row.getAttribute('data-status');
-      row.style.display = (status === 'all' || rowStatus === status) ? '' : 'none';
+    // Initialize Date Picker on DOM Load
+    document.addEventListener('DOMContentLoaded', () => {
+      flatpickr("#dateRange", {
+        mode: "range",
+        dateFormat: "d/m/Y",
+        onChange: (selectedDates) => {
+          const [startDate, endDate] = selectedDates;  // Destructure dates
+          console.log("Start Date:", startDate);
+          console.log("End Date:", endDate);
+        }
+      });
     });
 
-    filterList.style.display = 'none'; // Hide the dropdown after selection
-  });
-});
+    const filterButton = document.getElementById('filterButton');
+    const filterList = document.getElementById('filterList');
+    const filterLinks = document.querySelectorAll('#filterList a');
+
+    // Toggle the visibility of the filter list
+    filterButton.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent click from closing immediately
+      filterList.style.display = filterList.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Hide filter list when clicking outside
+    document.addEventListener('click', () => {
+      filterList.style.display = 'none';
+    });
+
+    // Apply the filter when a filter link is clicked
+    filterLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+
+        const status = this.getAttribute('data-status'); // Get status from link
+
+        // Filter table rows based on the selected status
+        tableRows.forEach(row => {
+          const rowStatus = row.getAttribute('data-status');
+          row.style.display = (status === 'all' || rowStatus === status) ? '' : 'none';
+        });
+
+        filterList.style.display = 'none'; // Hide the dropdown after selection
+      });
+    });
 
 
   </script>
-  
+
 </body>
+
 </html>
