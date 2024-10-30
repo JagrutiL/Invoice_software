@@ -31,7 +31,7 @@
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <button class="btn btn-close close-btn" id="closeSidebar" aria-label="Close sidebar"></button>
-    <a href="#" style="margin-top: 80px;">🧾<br>Invoice</a>
+    <a href="{{ url_for('dashboard') }}" style="margin-top: 80px;">🧾<br>Invoice</a>
     <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
   </div>
 
@@ -57,7 +57,9 @@
             <ul id="navList">
              
               <li><a href="#" data-status="all" class="active">All Payments</a></li>
-              <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
+              {% if is_admin == 1 %}
+            <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
+            {% endif %}
               <li><a href="#" data-status="pending">Pending for Payment</a></li>
               <li><a href="#" data-status="approved">Approved</a></li>
               <li><a href="#" data-status="payment-done">Payment Done</a></li>
@@ -74,14 +76,19 @@
                     <img src="../static/img/calendar1.png" alt="Select Range" >
                 </button>
             </li>
-                <li class="button" style="position: absolute;margin-left: -180px;">
-              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Employee <span class="caret"></span></a>
-              <ul class="filter-list dropdown-menu" > 
-                  <li><a href="#">Shilpa</a></li>
-                  <li><a href="#">Sohan</a></li>
-                  <li><a href="#">Employee 3</a></li>
+            {% if is_admin == 1 %}
+            <li class="button" style="position: absolute;z-index: 99999;margin-left: -180px;">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Employee <span
+                  class="caret"></span></a>
+              <ul class="filter-list dropdown-menu">
+                {% for item in emp %}
+                <li><a href="#">{{ item[0] }}</a></li>
+                {% endfor %}
+                <!-- <li><a href="#">Sohan</a></li>
+                    <li><a href="#">Employee 3</a></li> -->
               </ul>
             </li>
+            {% endif %}
             <li>
               <a href="{{ url_for('add_payment') }}" class="button">
                   <i class="fa fa-plus"></i>Add Payment
@@ -95,7 +102,9 @@
                 </button>
                 <ul class="filter-list" id="filterList"> 
                   <li><a href="#" data-status="all">All Payments</a></li> 
+                  {% if is_admin == 1 %}
                   <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
+                  {% endif %} 
                  
                   <li><a href="#" data-status="pending">Pending for Payment</a></li>
                   <li><a href="#" data-status="approved">Approved</a></li>

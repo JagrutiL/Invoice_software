@@ -7,10 +7,11 @@ app.secret_key = 'Anjali#123'
 name = ''
 mail = ''
 is_admin = ''
+emp = ''
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    global name, mail, is_admin
+    global name, mail, is_admin, emp
     connection = Mydatabase.connect_dbs()
     cursor = connection.cursor()
 
@@ -19,17 +20,19 @@ def login():
         password = request.form['password']
 
         cursor.execute('SELECT * FROM user WHERE email = %s AND password = %s', (email, password))
-
+        
         user = cursor.fetchone()
-        print("user  ",user)
-        connection.commit()
 
+        cursor.execute('SELECT user_name from user;')
+        emp = cursor.fetchall()
+    
+        connection.commit()
+       
         if user:
             name = user[2]
             mail = user[3]
             is_admin = user[6]
-            print("name", name)
-            print("mail", mail)
+            
             return redirect(url_for('dashboard')) 
         else:
             flash('Invalid Credentials!') 
@@ -37,18 +40,18 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    global name, mail, is_admin
+    global name, mail, is_admin, emp
     dashboard_name = "ADMIN DASHBOARD" if is_admin == 1 else "USER DASHBOARD"
-    return render_template('dashboard.html', name = name, mail = mail, dashboard_name=dashboard_name)  
+    return render_template('dashboard.html', name=name, mail=mail, dashboard_name=dashboard_name, emp=emp, is_admin=is_admin)  
 
-@app.route('/add_payment')
+@app.route('/add_payment', methods=['GET', 'POST'])
 def add_payment():
     return render_template('add_payment.html')  # Render the add payment page
 
-@app.route('/payment_detail')
-def payment_detail():
+@app.route('/detail', methods=['GET', 'POST'])
+def detail():
     return render_template('detail.html')  # Render the add payment page
 
 @app.route('/favicon.ico')
