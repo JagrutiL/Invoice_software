@@ -11,22 +11,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/header.css">
-  <link rel="stylesheet" href="../static/css/Attendance_Dashboard.css">
+  <link rel="stylesheet" href="../static/css/attendance_Dashboard.css">
   <style>
     
   </style>
 </head>
 <body>
 
-<!-- Toggle Button -->
-<div class="top_bar">
-  <button class="btn" id="sidebarToggle">
-    <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
-  </button>
-  <button class="bell">
-    <img src="../static/img/bell.png" alt="bell">
-  </button>
-</div>
+  <!-- Toggle Button -->
+  <div class="header">
+    <button class="btn" id="sidebarToggle">
+      <img class="menu" src="../static/img/menu1.png" alt="menu" height="10">
+    </button>
+    
+    <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
+    <button class="bell">
+      <img src="../static/img/bell.png" alt="bell">
+    </button>
+  </div>
 
 
   <!-- Sidebar -->
@@ -35,13 +37,6 @@
     <a href="#" style="margin-top: 80px;">🧾<br>Invoice</a>
     <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
   </div>
-
-
-  <!-- Header -->
-  <div class="header">
-    <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
-  </div>
-  
 
   <!-- Main Content -->
   <div class="main-content" id="mainContent">
@@ -63,7 +58,7 @@
           <div class="nav">
             <ul id="navList">
               <li><a href="#" data-status="Attendance" >Attendance</a></li>
-              <li><a href="#" data-status="Time Off" class="active">Time Off</a></li>
+              <li><a href="#" data-status="Time Off" class="active">All Leaves</a></li>
               <li><a href="#" data-status="Holiday’s List">Holiday’s List</a></li>
             </ul>
           </div>
@@ -107,23 +102,24 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
    // DOM elements
-   const sidebar = document.getElementById('sidebar');
   const mainContent = document.getElementById('mainContent');
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  const closeSidebar = document.getElementById('closeSidebar');
   const navLinks = document.querySelectorAll('#navList a'); 
   const tableRows = document.querySelectorAll('.table-container tbody tr'); // Adjust selector if needed
+  const sidebar = document.getElementById('sidebar');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const closeSidebar = document.getElementById('closeSidebar');
 
-  
   // Sidebar Toggle Functionality
   sidebarToggle.addEventListener('click', () => {
-  sidebar.classList.toggle('show');
-  mainContent.classList.toggle('shifted');
-});
-closeSidebar.addEventListener('click', () => {
-  sidebar.classList.remove('show');
-  mainContent.classList.remove('shifted');
-});
+    sidebar.classList.toggle('show'); // Toggle sidebar visibility
+    mainContent.classList.toggle('shift'); // Shift main content
+  });
+
+  closeSidebar.addEventListener('click', () => {
+    sidebar.classList.remove('show'); // Hide sidebar
+    mainContent.classList.remove('shift'); // Reset main content position
+  });
+
   // Navigation Links Click Handling (for both Sidebar and Filtering)
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
