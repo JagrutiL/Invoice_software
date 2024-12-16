@@ -1,0 +1,23 @@
+.button_registration {
+    color: #2B3674;
+    background-color: transparent;
+    height: 40px;
+    width: 150px;
+    border-radius: 7px;
+    font-weight: bold;
+    border: 1px solid #2B3674;
+    cursor: pointer;
+}
+
+.button_registration:focus {
+    outline: none;
+}
+.form-control {
+    border-color: #a3aed0;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}

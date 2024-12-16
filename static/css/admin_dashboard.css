@@ -1,0 +1,366 @@
+.admin_dashboard_attendance {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    color: #333843;
+    font-weight: 700;
+}
+
+.admin_dashboard_attendance.admin_dashboard_selected {
+    color: #001D83;
+    border: none;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+}
+
+.admin_dashboard_attendance::after {
+    content: '';
+    /* Creates the underline */
+    position: absolute;
+    bottom: -3px;
+    /* Positions the underline 10px below the text */
+    left: 50%;
+    /* Centers the underline horizontally */
+    width: 44px;
+    /* Sets the underline width */
+    height: 2px;
+    /* Thickness of the underline */
+    background-color: #001D83;
+    /* Color of the underline */
+    transform: translateX(-50%);
+}
+
+.target_current_switch_tab_working {
+    display: none;
+    background-color: #ffffff;
+}
+
+.target_current_switch_tab_working.active {
+    display: block;
+    background-color: #ffffff;
+
+}
+
+.admin_dashboard_attendance_second_main_div {
+    display: none;
+}
+
+.admin_dashboard_attendance_main_div {
+    display: block;
+    margin-top: 20px;
+
+}
+
+/* @media (max-width: 768px) {
+    .admin_dashboard_attendance_main_div {
+        display: none;
+    }
+
+    .admin_dashboard_attendance_second_main_div {
+        display: block;
+    }
+} */
+
+
+/* **********************************tab 2 start************************************** */
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.admin_dashboard_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    /* Horizontal line between rows */
+}
+
+th {
+    background-color: #ffffff;
+}
+
+/* Remove vertical lines (borders) */
+.admin_dashboard_table,
+th,
+td {
+    border-left: none;
+    border-right: none;
+}
+
+/* Wrapper for horizontal scrolling */
+.admin_dashboard_table_main_div {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure that the table does not overflow */
+.admin_dashboard_table {
+    width: 100%;
+    min-width: 600px;
+    /* Minimum width of the table to ensure horizontal scrolling */
+}
+
+.admin_dashboard_table_thead {
+    color: #515868;
+    font-weight: 300;
+}
+
+.admin_dashboard_table_thead {
+    font-weight: 700;
+    color: #333843;
+}
+
+.admin_dashboard_present {
+    background-color: #FEF8E5;
+    color: #E2B102;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+}
+
+.admin_dashboard_absent {
+    background-color: #F6FCFF;
+    color: #7795FF;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+
+}
+
+/* **********************************tab 2 end************************************** */
+
+
+/* ********************************************************************** */
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    /* For Safari */
+    width: 25px;
+    /* Increase the size */
+    height: 25px;
+    border: 2px solid #CFCFCF;
+    border-radius: 50%;
+    /* Make it circular */
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+}
+
+/* Checkbox background on hover */
+input[type="checkbox"]:hover {
+    border-color: #3965FF;
+}
+
+/* Checked state */
+input[type="checkbox"]:checked {
+    background-color: #3965FF;
+    border-color: #3965FF;
+    position: relative;
+}
+
+input[type="checkbox"]:checked::before {
+    content: "";
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 2px;
+    left: 5px;
+}
+
+/* *******************tab 2 start*************************** */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.admin_dashboard_table_present_ {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    /* Horizontal line between rows */
+}
+
+th {
+    background-color: #ffffff;
+}
+
+/* Remove vertical lines (borders) */
+.admin_dashboard_table_present_,
+th,
+td {
+    border-left: none;
+    border-right: none;
+}
+
+/* Wrapper for horizontal scrolling */
+.admin_dashboard_table_present_main_div {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure that the table does not overflow */
+.admin_dashboard_table_present_ {
+    width: 100%;
+    min-width: 600px;
+    /* Minimum width of the table to ensure horizontal scrolling */
+}
+
+.admin_dashboard_table_present_thead {
+    color: #515868;
+    font-weight: 300;
+}
+
+.admin_dashboard_table_present_thead {
+    font-weight: 700;
+    color: #333843;
+}
+
+.admin_dashboard_present {
+    background-color: #FEF8E5;
+    color: #E2B102;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+}
+
+.admin_dashboard_absent {
+    background-color: #F6FCFF;
+    color: #7795FF;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+
+}
+
+/* *******************tab 2 end*************************** */
+/* *******************tab 3 start *************************** */
+/* Wrapper for horizontal scrolling */
+.admin_dashboard_table_onleave_main_div {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure that the table does not overflow */
+.admin_dashboard_table_onleave_ {
+    width: 100%;
+    min-width: 600px;
+    /* Minimum width of the table to ensure horizontal scrolling */
+}
+
+.admin_dashboard_table_onleave_thead {
+    color: #515868;
+    font-weight: 300;
+}
+
+.admin_dashboard_table_onleave_thead {
+    font-weight: 700;
+    color: #333843;
+}
+
+.admin_dashboard_present_approval_pending {
+    background-color: #FEF8E5;
+    color: #E2B102;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+}
+
+.admin_dashboard_present_approval_rejected {
+    background-color: #FF696C;
+    color: #FFFFFF;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+}
+
+.admin_dashboard_present_approval_approved {
+    background-color: #35BA7D;
+    color: #FFFFFF;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+}
+
+.admin_dashboard_absent {
+    background-color: #F6FCFF;
+    color: #7795FF;
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 700;
+
+}
+
+.admin_dashboard_present_explaination {
+    color: #3C5144;
+    background-color: #ffffff;
+    border: 2px solid #667085;
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+
+}
+
+.admin_dashboard_present_explaination_anchor_tag {
+    color: #3C5144;
+    text-decoration: none;
+
+}
+
+/* *******************tab 3 end *************************** */

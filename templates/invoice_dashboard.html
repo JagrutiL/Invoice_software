@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +14,15 @@
   <link rel="stylesheet" href="../static/css/invoice_dashboard.css">
   <link rel="stylesheet" href="../static/css/header.css">
 </head>
+
 <body>
+
 
   <!-- Header -->
   <div class="header">
-    <img src="../Static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
+    <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" height="50">
   </div>
-  
+
   <!-- Toggle Button -->
   <div class="top_bar">
     <button class="btn" id="sidebarToggle">
@@ -29,7 +32,7 @@
       <img src="../static/img/bell.png" alt="bell">
     </button>
   </div>
-  
+
 
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
@@ -38,8 +41,10 @@
     <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
   </div>
 
+
   <!-- Main Content -->
   <div class="main-content" id="mainContent">
+
     <div class="nav_background">
       <!-- Move Invoice to the left -->
       <div class="nav_text"><b>DASHBOARD </b></div>
@@ -65,53 +70,53 @@
             <li><input id="dateRange" type="text" placeholder="Select Range"></li>
           </ul>
         </div>
-          <div class="nav-right">
-            <li>
-              <a href="add_payment.html" class="button">
-                  <i class="fa fa-plus"></i>Add Payment
-              </a>
+        <div class="nav-right">
+          <li>
+            <a href="add_payment.html" class="button">
+              <i class="fa fa-plus"></i>Add Payment
+            </a>
           </li>
-          
-            <li class="filter-container" style="margin-left: -50px;">
-              <button class="button" id="filterButton">
-                <img src="../Static/img/filter.png" alt="Filter">
-              </button>
-              <ul class="filter-list" id="filterList">  
-                <li><a href="#" data-status="all">All Payments</a></li>
-                <li><a href="#" data-status="pending">Pending</a></li>
-                <li><a href="#" data-status="approved">Approved</a></li>
-                <li><a href="#" data-status="payment done">Payment Done</a></li>
-                <li><a href="#" data-status="completed">Completed</a></li>
-                <li><a href="#" data-status="rejected">Rejected</a></li>
-              </ul>
-            </li>
-            <li><button class="button_top"><img src="../Static/img/Avatar_Small.png"></button></li>
-          </div>
-        
+
+          <li class="filter-container" style="margin-left: -50px;">
+            <button class="button" id="filterButton">
+              <img src="../Static/img/filter.png" alt="Filter">
+            </button>
+            <ul class="filter-list" id="filterList">
+              <li><a href="#" data-status="all">All Payments</a></li>
+              <li><a href="#" data-status="pending">Pending</a></li>
+              <li><a href="#" data-status="approved">Approved</a></li>
+              <li><a href="#" data-status="payment done">Payment Done</a></li>
+              <li><a href="#" data-status="completed">Completed</a></li>
+              <li><a href="#" data-status="rejected">Rejected</a></li>
+            </ul>
+          </li>
+          <li><button class="button_top"><img src="../Static/img/Avatar_Small.png"></button></li>
+        </div>
+
       </ul>
-      
+
       <div class="table-background">
         <table>
           <thead>
             <tr>
               <th></th>
               <th></th>
-              <th class="table_data">Date</th>     
+              <th class="table_data">Date</th>
               <th class="table_data">Price</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody id="invoiceTable">
-          <a href="detail.html">
-            <tr data-status="approved">
-              <td><img class="bill" src="../Static/img/logo_1.png"></td>
-              <td>Product 1</td>
-              <td class="table_data">Oct 16, 2024</td>
-              <td class="table_data">Rs. 5000/-</td>
-              <td><a  class="table_button_approved"href="detail.html">Approved</a></td>
-            </tr>
-          </a>
-           
+            <a href="detail.html">
+              <tr data-status="approved">
+                <td><img class="bill" src="../Static/img/logo_1.png"></td>
+                <td>Product 1</td>
+                <td class="table_data">Oct 16, 2024</td>
+                <td class="table_data">Rs. 5000/-</td>
+                <td><a class="table_button_approved" href="detail.html">Approved</a></td>
+              </tr>
+            </a>
+
             <tr data-status="pending">
               <td><img class="bill" src="../Static/img/logo_1.png"></td>
               <td>Product 2</td>
@@ -141,7 +146,7 @@
               <td><button class="table_button_rejected"><b>Rejected</b></button></td>
             </tr>
           </tbody>
-          
+
         </table>
       </div>
     </div>
@@ -153,94 +158,13 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // DOM elements
-  const mainContent = document.getElementById('mainContent');
-  const navLinks = document.querySelectorAll('#navList a'); 
-  const tableRows = document.querySelectorAll('#invoiceTable tr');
-  const sidebar = document.getElementById('sidebar');
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  const closeSidebar = document.getElementById('closeSidebar');
 
-  // Sidebar Toggle Functionality
-  sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('show'); // Toggle sidebar visibility
-    mainContent.classList.toggle('shift'); // Shift main content
-  });
-
-  closeSidebar.addEventListener('click', () => {
-    sidebar.classList.remove('show'); // Hide sidebar
-    mainContent.classList.remove('shift'); // Reset main content position
-  });
+  <!-- <script src="../static/js/sidebar_navbar.js"></script> -->
+  <script src="../static/js/dateflicker.js"></script>
+  <script src="../static/js/invoice_dashboard.js"></script>
 
 
-  // Navigation Links Click Handling (for both Sidebar and Filtering)
-  navLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();  // Prevent default anchor behavior
 
-      // Remove 'active' class from all links
-      navLinks.forEach(nav => nav.classList.remove('active'));
-
-      // Add 'active' class to the clicked link
-      this.classList.add('active');
-
-      const status = this.getAttribute('data-status');  // Get status from link
-
-      // Filter table rows based on the selected status
-      tableRows.forEach(row => {
-        const rowStatus = row.getAttribute('data-status');
-        row.style.display = (status === 'all' || rowStatus === status) ? '' : 'none';
-      });
-    });
-  });
-
-  // Initialize Date Picker on DOM Load
-  document.addEventListener('DOMContentLoaded', () => {
-    flatpickr("#dateRange", {
-      mode: "range",
-      dateFormat: "d/m/Y",
-      onChange: (selectedDates) => {
-        const [startDate, endDate] = selectedDates;  // Destructure dates
-        console.log("Start Date:", startDate);
-        console.log("End Date:", endDate);
-      }
-    });
-  });
-
-  const filterButton = document.getElementById('filterButton');
-const filterList = document.getElementById('filterList');
-const filterLinks = document.querySelectorAll('#filterList a');
-
-// Toggle the visibility of the filter list
-filterButton.addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent click from closing immediately
-  filterList.style.display = filterList.style.display === 'block' ? 'none' : 'block';
-});
-
-// Hide filter list when clicking outside
-document.addEventListener('click', () => {
-  filterList.style.display = 'none';
-});
-
-// Apply the filter when a filter link is clicked
-filterLinks.forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent default anchor behavior
-
-    const status = this.getAttribute('data-status'); // Get status from link
-
-    // Filter table rows based on the selected status
-    tableRows.forEach(row => {
-      const rowStatus = row.getAttribute('data-status');
-      row.style.display = (status === 'all' || rowStatus === status) ? '' : 'none';
-    });
-
-    filterList.style.display = 'none'; // Hide the dropdown after selection
-  });
-});
-
-  </script>
-  
 </body>
+
 </html>
