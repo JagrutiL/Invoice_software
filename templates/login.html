@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/login.css">
 </head>
+
 <body>
     <img src="../static/img/logo_image-removebg-preview.png" alt="Logo" class="logo">
     <div class="container">
@@ -30,7 +32,8 @@
                                 <input type="password" class="form-control" id="password" name="password">
                                 <div class="input-group-append">
                                     <span class="input-group-text toggle-password">
-                                        <img src="../static/img/eye.png" alt="Toggle Password" id="togglePassword" width="20">
+                                        <img src="../static/img/eye.png" alt="Toggle Password" id="togglePassword"
+                                            width="20">
                                     </span>
                                 </div>
                             </div>
@@ -58,56 +61,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
-            var emailError = document.getElementById("email_error");
-            var passwordError = document.getElementById("password_error");
-
-            // Clear previous error messages
-            emailError.textContent = "";
-            passwordError.textContent = "";
-
-            var hasError = false;
-
-            // Email validation
-            if (email.trim() === "") {
-                emailError.textContent = "Email is required.";
-                hasError = true;
-            }
-
-            // Password validation
-            var passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
-            if (password.trim() === "") {
-                passwordError.textContent = "Password is required.";
-                hasError = true;
-            } else if (!passwordPattern.test(password)) {
-                passwordError.textContent = "Password must be 8-20 characters long, contain a capital letter, a number, and a special character.";
-                hasError = true;
-            }
-
-            if (hasError) {
-                event.preventDefault(); // Prevent form submission
-            }
-        });
-
-        // Toggle password visibility and icon
-        const togglePassword = document.querySelector('#togglePassword');
-        const passwordInput = document.querySelector('#password_login');
-
-        togglePassword.addEventListener('click', function () {
-            // Toggle the type attribute 
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-
-            // Toggle the eye icon
-            if (type === 'text') {
-                togglePassword.src = "../static/img/cut-eye.png"; // Closed eye icon
-            } else {
-                togglePassword.src = "../static/img/eye.png"; // Open eye icon
-            }
-        });
-    </script>
+    <script src="../static/js/login.js"></script>
 </body>
+
 </html>

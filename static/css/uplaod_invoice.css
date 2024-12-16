@@ -1,0 +1,125 @@
+ul {
+    justify-content: center;
+  }
+ 
+  li a {
+    display: block;
+    color: #333843;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+  }
+ 
+  .button_top {
+    background-color: #ffffff00;
+    border: none;
+  }
+ 
+  .button i {
+    margin-right: 5px;
+  }
+ 
+  .nav_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+ 
+  .container_123 {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+ 
+  }
+ 
+  .form-control::placeholder {
+    color: #a1a1a1;
+  }
+ 
+  .form-control {
+    color: #a1a1a1;
+  }
+ 
+  .label_text {
+    color: #333843;
+    font-weight: 700;
+  }
+ 
+  .Submit_button {
+    margin-top: 10px;
+    background-color: #3965FF;
+    border: 0;
+    color: #ffffff;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .submit_button_upload_invoice{
+   margin-top: 10px;
+   background-color: #3965FF;
+   border: 0;
+   color: #ffffff;
+   border-radius: 5px;
+   padding-left: 30px;
+   padding-right: 30px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+  }
+  #uplaod_invoice_errorMessage {
+    color: rgb(235, 44, 44);
+    display: none;
+    margin-top: 10px;
+  }
+ 
+  @media (min-width: 768px) {
+    .sidebar {
+      transform: translateX(0);
+    }
+ 
+    #sidebarToggle {
+      display: none;
+    }
+ 
+    .close-btn {
+      display: none;
+    }
+  }
+ 
+  @media (max-width: 620px) {
+    .table_data {
+      display: none;
+    }
+  }
+ 
+  @media (max-width: 2220px) {
+    ul {
+ 
+      gap: 35px;
+    }
+  }
+ 
+  @media (max-width: 1400px) {
+    ul {
+      font-size: 12px;
+      gap: 10px;
+    }
+  }
+ 
+  @media (max-width: 1120px) {
+    ul {
+      font-size: 12px;
+      gap: 0px;
+    }
+  }
+ 
+  @media (max-width: 840px) {
+    ul {
+      font-size: 10px;
+    }
+  }

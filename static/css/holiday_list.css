@@ -1,0 +1,155 @@
+.holidaylist_date {
+    border-bottom: solid 1px #ebecec;
+
+}
+
+.table_container {
+    max-width: 100%;
+    /* Set the desired width */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+    /* Optional border */
+    margin: 20px;
+    /* Optional margin */
+    /* overflow: auto; */
+
+}
+
+.table_child {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+
+.table_data {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-weight: 700;
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+    color: #333843;
+}
+
+.table_head {
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+    border: 1px solid #ddd;
+    border-top: solid 1px rgb(255, 255, 255);
+    color: #333843;
+}
+
+.border_left {
+    border-left: solid 1px rgb(255, 255, 255);
+}
+
+.border_right {
+    border-right: solid 1px rgb(255, 255, 255);
+}
+
+.personal_info_div {
+    flex: 1 1 160px;
+    display: flex;
+    flex-direction: column;
+    border-right: solid 1px rgb(167, 164, 164);
+}
+
+
+
+.attendance_personal_info_parent_div {
+    background-color: #ffffff;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+}
+
+.attendance_personal_info_main_div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.attendance_personal_info_img_div {
+    text-align: center;
+}
+
+.attendance_personal_info_img_tag {
+    width: 130px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.attendance_personal_info_person_name {
+    font-size: 30px;
+    color: #3965FF;
+    font-weight: 600;
+    text-align: center;
+}
+
+.attendance_personal_info_designation {
+    font-size: 20px;
+    text-align: center;
+}
+
+
+
+.attendance_holidaymain_div {
+    margin-top: auto;
+}
+
+.attendance_remaining_holidays_number {
+    color: #3965FF;
+    font-size: 50px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.remaining_holidays_text {
+    text-align: center;
+    color: #333843;
+    font-size: 20px
+}
+
+.total_holidays_number {
+    color: #3965FF;
+    font-size: 50px;
+    font-weight: 900;
+    text-align: center;
+    font-size: 50px
+}
+
+.total_holidays_text {
+    text-align: center;
+    color: #333843;
+    font-size: 20px
+}
+
+.attendance_table_div {
+    flex: 1 1 1000px;
+    min-width: 0;
+}
+
+.holidaylist_dateparent_div {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 40px;
+    margin-top: 20px;
+}
+@media (max-width: 1339px) {
+    .personal_info_div {
+        border-right: solid 1px rgb(255, 255, 255);
+    }
+
+    .personal_info_div_hr2 {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .holidaylist_dateparent_div {
+        padding: 0px;
+    }
+}

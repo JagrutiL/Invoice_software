@@ -1,6 +1,7 @@
 ul {
   justify-content: center;
 }
+
 li a {
   display: block;
   color: #333843;
@@ -8,13 +9,16 @@ li a {
   text-decoration: none;
   font-weight: 700;
 }
-.button_top{
+
+.button_top {
   background-color: #ffffff00;
   border: none;
 }
+
 .button i {
   margin-right: 5px;
 }
+
 .nav_text {
   display: flex;
   justify-content: center;
@@ -23,23 +27,26 @@ li a {
 
 
 .container {
-background-color: #ffffff;
-padding: 30px;
-border-radius: 13px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for aesthetics */
-width: 100%;
-max-height: 80%;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 13px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for aesthetics */
+  width: 100%;
+  max-height: 80%;
 }
+
 .form-control::placeholder {
-color: #a1a1a1;
+  color: #a1a1a1;
 }
 
 .form-control {
-color: #a1a1a1;
+  color: #a1a1a1;
 }
-.label_text{
-color: #333843;
-font-weight: 700;
+
+.label_text {
+  color: #333843;
+  font-weight: 700;
 }
 
 .Submit_button {
@@ -58,13 +65,16 @@ font-weight: 700;
   .sidebar {
     transform: translateX(0);
   }
+
   #sidebarToggle {
     display: none;
   }
+
   .close-btn {
     display: none;
   }
 }
+
 @media (max-width: 620px) {
   .table_data {
     display: none;
@@ -74,26 +84,26 @@ font-weight: 700;
 @media (max-width: 2220px) {
   ul {
 
-  gap: 35px;
-}
+    gap: 35px;
+  }
 }
 
 @media (max-width: 1400px) {
   ul {
-  font-size: 12px;
-  gap: 10px;
-}
+    font-size: 12px;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 1120px) {
   ul {
-  font-size: 12px;
-  gap: 0px;
-}
+    font-size: 12px;
+    gap: 0px;
+  }
 }
 
 @media (max-width: 840px) {
   ul {
-  font-size: 10px;
-}
+    font-size: 10px;
+  }
 }
