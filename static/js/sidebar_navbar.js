@@ -16,10 +16,28 @@
   });
 
 
-  // Add click event listener to each navigation link
-  navLinks.forEach(link => {
-      link.addEventListener('click', function () {
+//   // Add click event listener to each navigation link
+//   navLinks.forEach(link => {
+//       link.addEventListener('click', function () {
+//           navLinks.forEach(nav => nav.classList.remove('active'));
+//           this.classList.add('active');
+//       });
+//   });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Define navLinks
+    const navLinks = document.querySelectorAll('.nav-link'); // Update selector as per your HTML structure
+  
+    // Ensure navLinks exist
+    if (navLinks) {
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
           navLinks.forEach(nav => nav.classList.remove('active'));
-          this.classList.add('active');
+          link.classList.add('active');
+        });
       });
+    } else {
+      console.error('No nav links found. Ensure you have elements with the "nav-link" class.');
+    }
   });
+  

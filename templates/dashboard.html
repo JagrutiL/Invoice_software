@@ -35,6 +35,7 @@
     <button class="btn btn-close close-btn" id="closeSidebar" aria-label="Close sidebar"></button>
     <a href="{{ url_for('dashboard') }}" style="margin-top: 80px;">🧾<br>Invoice</a>
     <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
+    <a href="{{url_for('logout')}}">Logout</a>
   </div>
 
   <!-- Main Content -->
@@ -46,7 +47,7 @@
         <li><button class="button_profile"><img src="../static/img/Avatar_Small.png"></button></li>
         <li>
           <div><b>{{name}}</b></div>
-          <div>{{ mail }}</div>
+          <div>{{mail}}</div>
         </li>
       </ul>
     </div>
@@ -55,22 +56,37 @@
 
       <ul>
         <div class="nav">
-
           <ul id="navList">
-
+            {% if is_admin == 1 %}
+              <li><a href="#" data-status="all" class="active">All Payments</a></li>
+              <li id="requestSection"><a href="#" data-status="pending">All Request</a></li>
+              <li><a href="#" data-status="waiting for payment">Waiting For Payment</a></li>
+              <li><a href="#" data-status="payment-done">Payment Done</a></li>
+              <li><a href="#" data-status="completed">Completed</a></li>
+              <li><a href="#" data-status="rejected">Rejected22222</a></li>
+            {% elif is_admin == 2 %}
+              <li><a href="#" data-status="all" class="active">All Payments</a></li>
+              <li><a href="#" data-status="pending">Pending for Payment</a></li>
+              <li><a href="#" data-status="waiting for payment">Waiting For Payment</a></li>
+              <li><a href="#" data-status="payment-done">Payment Done</a></li>
+              <li><a href="#" data-status="completed">Completed</a></li>
+              <li><a href="#" data-status="rejected">Rejected2222</a></li>
+            {% endif %}
+          </ul>
+          
+<!-- 
+          <ul id="navList">
             <li><a href="#" data-status="all" class="active">All Payments</a></li>
             {% if is_admin == 1 %}
             <li id="requestSection"><a href="#" data-status="request">All Request</a></li>
             {% endif %}
+            
             <li><a href="#" data-status="pending">Pending for Payment</a></li>
-            <li><a href="#" data-status="approved">Approved</a></li>
+            <li><a href="#" data-status="waiting for payment">Waiting For Payment</a></li>
             <li><a href="#" data-status="payment-done">Payment Done</a></li>
             <li><a href="#" data-status="completed">Completed</a></li>
             <li><a href="#" data-status="rejected">Rejected</a></li>
-
-
-
-          </ul>
+          </ul> -->
         </div>
         <div class="nav-right">
           <li class="button">
@@ -98,7 +114,7 @@
           </li>
 
 
-          <li class="filter-container" style="margin-left: -50px;">
+          <!-- <li class="filter-container" style="margin-left: -50px;">
             <button class="button" id="filterButton">
               <img src="../static/img/filter.png" alt="Filter">
             </button>
@@ -109,13 +125,13 @@
               {% endif %}
 
               <li><a href="#" data-status="pending">Pending for Payment</a></li>
-              <li><a href="#" data-status="approved">Approved</a></li>
+              <li><a href="#" data-status="Waiting for Payment">Waiting for Payment</a></li>
               <li><a href="#" data-status="payment done">Payment Done</a></li>
               <li><a href="#" data-status="completed">Completed</a></li>
               <li><a href="#" data-status="rejected">Rejected</a></li>
 
             </ul>
-          </li>
+          </li> -->
         </div>
 
       </ul>
@@ -126,7 +142,7 @@
           <thead>
             <tr>
               <th></th>
-              <th></th>
+              <th>Product</th>
               <th class="table_data">Date</th>
               <th class="table_data">Price</th>
               <th>Status</th>
@@ -134,61 +150,77 @@
           </thead>
           <tbody id="invoiceTable">
 
-            <tr data-status="approved">
+            <!-- <tr data-status="approved">
               <td><img class="bill" src="../static/img/logo_1.png"></td>
-              <td>Product 1</td>
-              <td class="table_data">Oct 16, 2024</td>
-              <td class="table_data">Rs. 5000/-</td>
+              <td></td>
+              <td class="table_data"></td>
+              <td class="table_data">Rs. /-</td>
               <td> <button class="table_button_approved"><b>Approved</b></button></td>
-            </tr>
+            </tr> -->
 
-
-            <tr data-status="pending">
+            {{result}}
+            {% for i in result %}
+            <tr data-status="{{ i[3] | lower }}">
               <td><img class="bill" src="../static/img/logo_1.png" alt="Product Logo"></td>
-              <td>Product 2</td>
-              <td class="table_data">Oct 16, 2024</td>
-              <td class="table_data">Rs. 5000/-</td>
-              <td>
-                <button class="table_button_pending"><b>Pending</b></button>
+              <td>{{ i[0] }}</td>
+              <td class="table_data">{{ i[1] }}</td>
+              <td class="table_data">Rs. {{ i[2] }}/-</td>
 
+              <!-- For Admin -->
 
+              {% if i[4] == 0 %}
+              <!-- If status is 'Pending' -->
+              {% if is_admin == 1 %}
+              <td><a href="{{ url_for('detail', invoice_number=i[5]) }}" class="view-link">View</a></td>
+              <td >
+                <button class="btn btn-success accept-button" data-invoice="{{ i[5] }}" data-action="accept">Accept</button>
+
+                <button class="btn btn-danger deny-button" data-invoice="{{ i[5] }}" data-action="deny">Deny</button>
               </td>
+              {% elif is_admin == 2 %}
+              <td><button class="table_button_pending"><b>Pending</b></button></td>
+              {% endif %}
+              {% else %}
+              <!-- For other statuses -->
+              <td><b>{{ i[3] }}</b></td>
+              {% endif %}
             </tr>
+            {% endfor %}
 
-            <tr data-status="request">
+            <!-- <tr data-status="request">
               <td><img class="bill" src="../static/img/logo_1.png" alt="Product Logo"></td>
               <td>Product 2</td>
               <td class="table_data">Oct 16, 2024</td>
               <td class="table_data">Rs. 5000/-</td>
               <td>
-                <a href="view_product.html" class=" view-link">View</a>
+                <a href="../templates/detail.html" class=" view-link">View</a>
               </td>
               <td>
                 <button class="btn btn-success accept-button">Accept</button>
                 <button class="btn btn-danger deny-button">Deny</button>
               </td>
-            </tr>
-            <tr data-status="payment-done">
+            </tr> -->
+            <!-- <tr data-status="payment-done">
               <td><img class="bill" src="../static/img/logo_1.png"></td>
               <td>Product 3</td>
               <td class="table_data">Oct 16, 2024</td>
               <td class="table_data">Rs. 5000/-</td>
               <td><button class="table_button_paid"><b>Payment done upload Invoice</b></button></td>
-            </tr>
-            <tr data-status="completed">
+            </tr> -->
+            <!-- <tr data-status="completed">
               <td><img class="bill" src="../static/img/logo_1.png"></td>
               <td>Product 4</td>
               <td class="table_data">Oct 16, 2024</td>
               <td class="table_data">Rs. 5000/-</td>
               <td><button class="table_button_completed"><b>Completed</b></button></td>
-            </tr>
-            <tr data-status="rejected">
+            </tr> -->
+            <!-- <tr data-status="rejected">
               <td><img class="bill" src="../static/img/logo_1.png"></td>
               <td>Product 5</td>
               <td class="table_data">Oct 16, 2024</td>
               <td class="table_data">Rs. 5000/-</td>
               <td><button class="table_button_rejected"><b>Rejected</b></button></td>
-            </tr>
+            </tr>  -->
           </tbody>
         </table>
       </div>
@@ -200,10 +232,92 @@
   <div class="footer">
     Powered By EVOLUZN
   </div>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../static/js/dashboard.js"></script>
   <script src="../static/js/dateflicker.js"></script>
+  <script>
+  //   document.addEventListener('DOMContentLoaded', function() {
+  //   const buttons = document.querySelectorAll('.accept-button, .deny-button');
+
+  //   buttons.forEach(button => {
+  //     button.addEventListener('click', function() {
+  //       const invoiceNumber = this.getAttribute('data-invoice');
+  //       console.log('invoiceNumber',invoiceNumber)
+  //       const action = this.getAttribute('data-action');
+  //       console.log('action',action)
+
+  //       fetch('/update_status', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({ invoice_number: invoiceNumber, action: action }),
+  //       })
+  //         .then(response => response.json())
+  //         .then(data => {
+  //           if (data.success) {
+  //             // Update the UI to reflect the new status
+  //             const row = this.closest('tr');
+  //             row.querySelector('td:last-child').innerHTML = 
+  //               `<b>${action === 'accept' ? 'Approved' : 'Rejected'}</b>`;
+  //           } else {
+  //             alert('Error updating status: ' + data.error);
+  //           }
+  //         })
+  //         .catch(error => {
+  //           console.error('Error:', error);
+  //         });
+  //     });
+  //   });
+  // });
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.accept-button, .deny-button');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', function () {
+      const invoiceNumber = this.getAttribute('data-invoice');
+      console.log('invoiceNumber', invoiceNumber);
+      const action = this.getAttribute('data-action');
+      console.log('action', action);
+
+      fetch('/update_status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ invoice_number: invoiceNumber, action: action }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            // Update the UI to reflect the new status
+            const row = this.closest('tr');
+            const statusCell = row.querySelector('td:last-child');
+
+            if (action === 'accept') {
+              statusCell.innerHTML =
+                `<button class="table_button_approved"><b>Waiting for Payment</b></button>`;
+            } else if (action === 'deny') {
+              statusCell.innerHTML =
+                `<button class="table_button_rejected"><b>Rejected</b></button>`;
+            }
+          } else {
+            alert('Error updating status: ' + data.error);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    });
+  });
+});
+
+
+  
+  </script>
 
 </body>
 
