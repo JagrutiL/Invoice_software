@@ -33,7 +33,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
 // Toggle password visibility and icon
 const togglePassword = document.querySelector('#togglePassword');
-const passwordInput = document.querySelector('#password_login');
+const passwordInput = document.querySelector('#password');
 
 togglePassword.addEventListener('click', function () {
     // Toggle the type attribute 

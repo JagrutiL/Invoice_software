@@ -37,6 +37,8 @@
   <div class="sidebar" id="sidebar">
     <button class="btn btn-close close-btn" id="closeSidebar" aria-label="Close sidebar"></button>
     <a href="#" style="margin-top: 80px;">🧾<br>Invoice</a>
+    <!-- <a href="#" class="{% if dashboard_name == 'Invoice' %}active{% endif %}">🧾<br>Invoice</a> -->
+ 
     <a href="#" style="margin-top: 10px;"><i class="fa-regular fa-clipboard"></i><br>Attendance</a>
   </div>
 
@@ -56,27 +58,32 @@
 
     <div class="table-container">
       <div class="table-background">
-        <ul>
-          <li><img src="../static/img/Avatar_Small.png"></li>
-          <li>
-            <div><b>Lamakera Ltd.</b></div>
-            <div>lamakera@gmail.com</div>
-          </li>
-        </ul>
+        {% if payment_details and not payment_details.get('error') %}
+        
+      <ul>  
+        <li><img src="../static/img/Avatar_Small.png"></li>
+        <li>
+          <div><b>{{ name }}</b></div>
+          <div>{{ mail }}</div>
+        </li>
+       
+      </ul>
 
         <div class="rectangle">
           <div class="heading">Invoice Number</div><br>
-          <div>INVOICE- 8236JD3F</div>
-          <div>Issued Date :16 Oct, 2024</div>
-          <div>Due Date :20 Oct, 2024</div>
+          <div>INVOICE- {{ payment_details.invoice_no }}</div>
+          <div>Issued Date: {{ payment_details.issued_date }}</div>
+          <div>Due Date: {{ payment_details.due_date }}</div>
         </div>
 
+
         <div class="heading">Item Name</div>
-        <div>Details items with more information</div><br>
+        <div>{{ payment_details.item_name }}</div><br>
+  
 
         <div class="form-group mb-4">
           <label for="itemDetails" class="heading mb-2">Item Details</label>
-          <textarea class="form-control" id="itemDetails" placeholder=""></textarea>
+          <textarea class="form-control" id="itemDetails" readonly>{{ payment_details.details }}</textarea>
         </div>
 
         <!-- Row for Quantity, Amount, and Payment Method -->
@@ -84,25 +91,30 @@
           <div class="col">
             <div class="form-group">
               <label for="quantity" class="heading mb-2">Quantity</label>
-              <input type="text" class="form-control" id="quantity" placeholder="">
+              <input type="text" class="form-control" id="quantity" value="{{ payment_details.quantity }}" readonly>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="amount" class="heading mb-2">Amount</label>
-              <input type="text" class="form-control" id="amount" placeholder="">
+              <input type="text" class="form-control" id="amount" value="{{ payment_details.amount }}" readonly>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="paymentMethod" class="heading mb-2">Payment Method</label>
-              <input type="text" class="form-control mb-2" id="paymentMethod" placeholder="" readonly>
+              <input type="text" class="form-control mb-2" id="paymentMethod" value="{{ payment_details.payment }}" readonly>
             </div>
             <div class="status-section">
-              <button class="btn Submit_button"><b>PENDING</b></button>
+              <button class="btn Submit_button"><b>{{ 'PENDING' if payment_details.status == 0 else 'PAID' }}</b></button>
             </div>
           </div>
         </div>
+        {% else %}
+        <div class="alert alert-warning">
+          {{ payment_details.error if payment_details else 'No payment details available.' }}
+        </div>
+      {% endif %}
       </div>
     </div>
   </div>

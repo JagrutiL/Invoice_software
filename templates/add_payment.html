@@ -48,12 +48,12 @@
   <div class="main-content" id="mainContent">
     <div class="nav_background">
       <!-- Move Invoice to the left -->
-      <div class="nav_text"><b>ADMIN DASHBOARD </b></div>
+      <div class="nav_text"><b>{{dashboard_name}}</b></div>
       <ul>
         <li><button class="button_profile"><img src="../static/img/Avatar_Small.png"></button></li>
         <li>
-          <div><b>Shilpa</b></div>
-          <div>shilpa@evoluzn.in</div>
+          <div><b>{{name}}</b></div>
+          <div>{{mail}}</div>
         </li>
       </ul>
     </div>
@@ -64,35 +64,35 @@
 
 
           <!-- Form for submitting item and payment details -->
-          <form id="paymentForm" class="custom-form" onsubmit="return validateForm(event);">
+          <form action="{{ url_for('add_payment') }}" id="paymentForm" class="custom-form" onsubmit="return validateForm(event);" method="POST">
             <div class="form-group mb-4">
               <label for="itemName" class="label_text mb-2">Item Name</label>
-              <input type="text" class="form-control" id="itemName" placeholder="Enter item name">
+              <input type="text" class="form-control" id="itemName" placeholder="Enter item name" name="item_name">
             </div>
 
             <div class="form-group mb-4">
               <label for="itemDetails" class="label_text mb-2">Item Details</label>
-              <textarea class="form-control" id="itemDetails" placeholder="Enter item details"></textarea>
+              <textarea class="form-control" id="itemDetails" placeholder="Enter item details" name="item_details"></textarea>
             </div>
 
             <div class="form-group mb-4">
               <label for="quantity" class="label_text mb-2">Vendor Name</label>
-              <textarea class="form-control" id="itemDetails" placeholder="Enter Name"></textarea>
+              <textarea class="form-control" id="itemDetails" placeholder="Enter Name" name="vendor_name"></textarea>
             </div>
 
             <div class="form-group mb-4">
               <label for="quantity" class="label_text mb-2">Quantity</label>
-              <input type="number" class="form-control" id="quantity" placeholder="Enter quantity">
+              <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" name="quantity">
             </div>
 
             <div class="form-group mb-4">
               <label for="Amount" class="label_text mb-2">Amount</label>
-              <input type="number" class="form-control amount" id="Amount" placeholder="Enter Amount">
+              <input type="number" class="form-control amount" id="Amount" placeholder="Enter Amount" name="amount">
             </div>
 
             <div class="form-group mb-4">
               <label for="paymentMethod" class="label_text mb-2">Payment Method</label>
-              <select class="form-control" id="paymentMethod" onchange="handlePaymentMethodChange()">
+              <select class="form-control" id="paymentMethod" name="payment_method" onchange="handlePaymentMethodChange()">
                 <option value="cash">Cash/UPI</option>
                 <option value="bank">Bank</option>
                 <option value="card">Card</option>
